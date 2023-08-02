@@ -9,15 +9,19 @@
 		/// <exception cref="NullReferenceException"></exception>
 		public static T GetMax<T>(this IEnumerable<T> collection, Func<T, float> converter) where T : class
 		{
-			if (collection == null || collection.Count() == 0)
-				throw new NullReferenceException();
+			if (converter == null)
+				throw new ArgumentNullException(nameof(converter));
+			if (collection == null)
+				throw new ArgumentNullException(nameof(collection));
+			if (collection.Count() == 0)
+				return null;
 
-			int indexMax = 0;
-			float floatMax = converter(collection.ElementAt(0));
+			var indexMax = 0;
+			var floatMax = converter(collection.ElementAt(0));
 
 			for (int i = 1; i < collection.Count(); i++)
 			{
-				float floatToCompare = converter(collection.ElementAt(i));
+				var floatToCompare = converter(collection.ElementAt(i));
 				if (floatToCompare > floatMax)
 				{
 					indexMax = i;

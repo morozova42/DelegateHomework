@@ -17,7 +17,7 @@ internal class Program
 		Console.BackgroundColor = ConsoleColor.Magenta;
 		Console.WriteLine($"Max FileInfo is:");
 		Console.ResetColor();
-		Console.WriteLine(_files.GetMax(ConvertFileOnFileLength).Name);
+		Console.WriteLine(_files.GetMax(ConvertFileOnFileLength)?.Name);
 	}
 
 	/// <summary>
